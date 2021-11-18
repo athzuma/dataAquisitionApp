@@ -39,11 +39,12 @@ expo start
 ~~~
 Após este passo, deverá aparecer no navegador as ferramentas de desenvolvedor do Expo, exibindo o QRCode que deve ser lido pelo dispositivo:
 
-<h3 align="center">Desktop</h3> 
+<p align="center">Ferramentas Desenvolvedor Expo</p> 
 <br>
 <p align="center"> 
- <img src="https://user-images.githubusercontent.com/79487290/133345319-982000ea-1f51-4a4c-a485-d38a1990f1ce.gif" width="600"/>
+ <img src="https://user-images.githubusercontent.com/79487290/142332174-dad0e2db-2316-47af-b8c8-942ce983c1f0.png" width="600"/>
 </p>
+
 <br>
 
 
