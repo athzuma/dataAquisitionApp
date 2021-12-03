@@ -107,7 +107,7 @@ expo install react-native-vector-icons
 <p align="center">Wireframe</p> 
 <br>
 <p align="center"> 
- <img src="https://user-images.githubusercontent.com/79487290/142332174-dad0e2db-2316-47af-b8c8-942ce983c1f0.png" width="600"/>
+ <img src="https://user-images.githubusercontent.com/79487290/144550588-929a6dff-f8f7-4ff7-a3d7-5ac9adbdb353.png" width="600"/>
 </p>
 
 <br>
