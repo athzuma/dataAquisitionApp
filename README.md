@@ -4,8 +4,10 @@
 Desenvolvida para realizar o levantamento do dataset de imagens dos instrumentos da Refinaria
 
 ## 💻 Tecnologias
+- Figma;
 - React Native;
 - Expo;
+- React Native Navigation;
 
 ## ⚙️ Instalações
 
@@ -26,14 +28,18 @@ Selecionar "blank template"
 cd my-app
 ~~~
 
-4) Instalar a Expo Camera
+4) Clonar o repositório e instalar todas as dependências;
+
+## 👾 Dependências
+
+### <b>Expo Camera</b>
+- [Documentação](https://docs.expo.dev/versions/latest/sdk/camera/)
+
+Execute:
 ~~~ cmd
 expo install expo-camera
 ~~~
-
-5) Inserir o código deste repositório (App.js) no App.js criado na sua máquina
-
-6) Para executar a aplicação você deve rodar o servidor Expo e abrir o App no dispositivo a partir do QRCode gerado:
+ Para executar a aplicação você deve rodar o servidor Expo e abrir o App no dispositivo a partir do QRCode gerado:
 ~~~ cmd
 expo start
 ~~~
@@ -46,6 +52,66 @@ Após este passo, deverá aparecer no navegador as ferramentas de desenvolvedor 
 </p>
 
 <br>
+
+### <b>React Navigation</b>
+- [Documentação](https://reactnavigation.org/docs/getting-started)
+
+Depêndencia utilizada para realizar a navegação entre páginas da aplicação, execute:
+
+~~~ cmd
+yarn add @react-navigation/native
+~~~
+~~~ cmd
+expo install react-native-screens react-native-safe-area-context
+~~~
+~~~ cmd
+yarn add @react-navigation/native-stack
+~~~
+
+### <b>Permissions</b>
+- [Documentação](https://docs.expo.dev/versions/v39.0.0/sdk/permissions/)
+
+Execute:
+
+~~~ cmd
+expo install expo-permissions
+~~~
+~~~ cmd
+expo install react-native-gesture-handler
+~~~
+
+### <b>MediaLibrary</b>
+- [Documentação](https://docs.expo.dev/versions/latest/sdk/media-library/)
+
+Execute:
+
+~~~ cmd
+expo install expo-media-library
+
+~~~
+
+### <b>Vector Icons</b>
+- [Documentação](https://docs.expo.dev/guides/icons/)
+
+Execute:
+
+~~~ cmd
+expo install react-native-vector-icons
+~~~
+
+
+## 📲Wireframe da aplicação
+
+- [Arquivo Figma](https://www.figma.com/file/eav6egjSzYpBLCE56IMkAF/Data-Aquisition?node-id=3%3A16)
+
+<p align="center">Wireframe</p> 
+<br>
+<p align="center"> 
+ <img src="https://user-images.githubusercontent.com/79487290/142332174-dad0e2db-2316-47af-b8c8-942ce983c1f0.png" width="600"/>
+</p>
+
+<br>
+
 
 ## ✅Resultado
 
