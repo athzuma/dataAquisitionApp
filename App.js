@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './src/pages/Home';
+import Erro from './src/pages/Erro';
 import PageA from './src/pages/PageA';
 import Confirmation from './src/pages/Confirmation';
 import Finish from './src/pages/Finish';

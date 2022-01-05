@@ -102,7 +102,7 @@ expo install react-native-vector-icons
 
 ## 📲Wireframe da aplicação
 
-- [Arquivo Figma](https://www.figma.com/file/eav6egjSzYpBLCE56IMkAF/Data-Aquisition?node-id=3%3A16)
+- [Arquivo Figma Completo](https://www.figma.com/file/eav6egjSzYpBLCE56IMkAF/Data-Aquisition?node-id=3%3A16)
 
 <p align="center">Wireframe</p> 
 <br>

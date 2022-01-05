@@ -12,6 +12,9 @@ export default function Confirmation({navigation}) {
             <TouchableOpacity style={styles.buttons} onPress={ () => navigation.navigate('Finish')}>  
                 <Image source={require('../../../assets/buttonConfirmation.png')} />
             </TouchableOpacity >
+            <TouchableOpacity style={styles.buttons}>  
+                <Image source={require('../../../assets/buttonInsert.png')} />
+            </TouchableOpacity>
             <TouchableOpacity style={styles.buttons} onPress={ () => navigation.navigate('PageA')}>  
                 <Image source={require('../../../assets/buttonTryAgain.png')} />
             </TouchableOpacity>
@@ -48,7 +51,7 @@ export default function Confirmation({navigation}) {
         flexDirection:'row', 
     },
     buttons: { 
-        margin:50,
+        margin:27,
     },
     
   });

@@ -72,10 +72,10 @@ export default function PageA({navigation}) {
                       
             <View style={styles.iconsModal}> 
               <TouchableOpacity style={styles.iconsModalButtons} onPress={() => setOpen(false)}>
-                <FontAwesome name="window-close" size={50} color="#fff" />
+              <Image source={require('../../../assets/x.png')} />
               </TouchableOpacity>
               <TouchableOpacity style={styles.iconsModalButtons} onPress={ () => navigation.navigate('Confirmation')}>
-                <FontAwesome name="share" size={50} color="#fff" />
+              <Image source={require('../../../assets/v.png')} />
               </TouchableOpacity>
             </View>
             
@@ -128,12 +128,13 @@ const styles = StyleSheet.create({
     marginBottom:20,
   },
   iconsModal: {
-    marginTop:60,
+    marginTop:80,
     flexDirection:'row', 
-    
+    justifyContent:'space-between',
   },
   iconsModalButtons: {
-  
+   
+    marginHorizontal:50,
   },
 
 });
