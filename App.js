@@ -32,11 +32,7 @@ export default function App() {
       component={PageA} 
       options={{
         title:'',
-        headerStyle:{
-          backgroundColor:'#3B7032',
-        },
-        headerTintColor: '#000000',
-        headerShown: true,
+        headerShown: false,
         headerTransparent: true,
       }}
       />

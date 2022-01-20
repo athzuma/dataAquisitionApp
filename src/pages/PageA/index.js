@@ -1,8 +1,9 @@
-import React, {useState, useEffect, useRef} from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image } from 'react-native';
+import React, {useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image, Dimensions } from 'react-native';
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
+import MaskSvg from '../Mask';
 
 export default function PageA({navigation}) {
   const [type] = useState(Camera.Constants.Type.back); //state para definir câmera traseira ou frontal
@@ -52,9 +53,10 @@ export default function PageA({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Camera style={styles.camera} type={type} ref={camRef} >
-        <View></View>
-      </Camera>    
+      <Camera style={styles.camera} type={type} ref={camRef} />
+
+      <MaskSvg/>  
+      <Text style={styles.instruction}>Posicione o instrumento e o QR Code:</Text>
      
       <TouchableOpacity  style={styles.takePictureButton} onPress={ takePicture}>  
         <Image source={require('../../../assets/capture.png')} style={styles.captureButton} />
@@ -95,9 +97,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   camera: {
     flex: 1,
+    position: 'absolute',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
   captureButton:{
     width:90,
@@ -105,13 +111,8 @@ const styles = StyleSheet.create({
   },
   takePictureButton:{
     justifyContent:'center',
-    alignItems: 'center',
     position:'absolute',
-    top:'80%',
-    left:'40%',
-    backgroundColor:'transparent',
-    width:90,
-    height:84,
+    top:'89%',
   },
   modal:{
     flex:1,
@@ -133,6 +134,12 @@ const styles = StyleSheet.create({
   },
   iconsModalButtons: {
     marginHorizontal:50,
+  },
+  instruction:{
+    position:'absolute',
+    top:80,
+    fontSize:22,
+    fontWeight:"600"
   },
 
 });
