@@ -44,7 +44,8 @@ export default function PageA({navigation}) {
   async function savePicture(){
     const asset = await MediaLibrary.createAssetAsync(capturedPhoto)
     .then(() =>{
-      alert('Salvo com sucesso!')
+      console.log('Salvo com sucesso')
+      navigation.navigate('Confirmation')
     })
     .catch(error => {
       console.log('erro',error);
@@ -73,10 +74,10 @@ export default function PageA({navigation}) {
                       
             <View style={styles.iconsModal}> 
               <TouchableOpacity style={styles.iconsModalButtons} onPress={() => setOpen(false)}>
-              <Image source={require('../../../assets/x.png')} />
+                <Image source={require('../../../assets/x.png')} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.iconsModalButtons} onPress={ () => navigation.navigate('Confirmation')}>
-              <Image source={require('../../../assets/v.png')} />
+              <TouchableOpacity style={styles.iconsModalButtons} onPress={savePicture}>
+                <Image source={require('../../../assets/v.png')} />
               </TouchableOpacity>
             </View>
             
