@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image } 
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
-import {FontAwesome} from '@expo/vector-icons';
 
 export default function PageA({navigation}) {
   const [type] = useState(Camera.Constants.Type.back); //state para definir câmera traseira ou frontal
@@ -133,7 +132,6 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
   },
   iconsModalButtons: {
-   
     marginHorizontal:50,
   },
 

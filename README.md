@@ -7,7 +7,6 @@ Desenvolvida para realizar o levantamento do dataset de imagens dos instrumentos
 - Figma;
 - React Native;
 - Expo;
-- React Native Navigation;
 
 ## ⚙️ Instalações
 
@@ -99,7 +98,14 @@ Execute:
 expo install react-native-vector-icons
 ~~~
 
+### <b>Expo Svg</b>
+- [Documentação](https://docs.expo.dev/versions/latest/sdk/svg/)
 
+Execute:
+
+~~~ cmd
+expo install react-native-svg
+~~~
 ## 📲Wireframe da aplicação
 
 - [Arquivo Figma Completo](https://www.figma.com/file/eav6egjSzYpBLCE56IMkAF/Data-Aquisition?node-id=3%3A16)
