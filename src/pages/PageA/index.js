@@ -4,6 +4,7 @@ import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
 import MaskSvg from '../Mask';
+import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default function PageA({navigation}) {
   const [type] = useState(Camera.Constants.Type.back); //state para definir câmera traseira ou frontal
@@ -11,6 +12,13 @@ export default function PageA({navigation}) {
   const camRef = useRef (null); //referenciando a camera 
   const [capturedPhoto, setCapturedPhoto] = useState(null); //state para controlar captura de imagem
   const [open, setOpen] = useState(false); //state para controlar o modal de exibição
+
+  const [scanned, setScanned] = useState(false);
+
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    alert(`Código do tipo ${type} e valor ${data} foi escaneado`);
+  };
   
   useEffect(() => {// useEffect = 1ª vez que é executado o app
     (async () =>{
@@ -29,8 +37,10 @@ export default function PageA({navigation}) {
     return <View/>;
   } 
   if(hasPermission === false){
-    return <Text>Acesso negado!</Text>
+    return <Text>Acesso a câmera negado!</Text>
   } 
+
+ 
 
   async function takePicture(){
     if(camRef){
@@ -44,7 +54,8 @@ export default function PageA({navigation}) {
   async function savePicture(){
     const asset = await MediaLibrary.createAssetAsync(capturedPhoto)
     .then(() =>{
-      alert('Salvo com sucesso!')
+      navigation.navigate('Confirmation')
+      console.log('Imagem salva')
     })
     .catch(error => {
       console.log('erro',error);
@@ -53,9 +64,16 @@ export default function PageA({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
+     
       <Camera style={styles.camera} type={type} ref={camRef} />
 
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={StyleSheet.absoluteFillObject}
+      />
+
       <MaskSvg/>  
+
       <Text style={styles.instruction}>Posicione o instrumento e o QR Code:</Text>
      
       <TouchableOpacity  style={styles.takePictureButton} onPress={ takePicture}>  
@@ -75,7 +93,7 @@ export default function PageA({navigation}) {
               <TouchableOpacity style={styles.iconsModalButtons} onPress={() => setOpen(false)}>
               <Image source={require('../../../assets/x.png')} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.iconsModalButtons} onPress={ () => navigation.navigate('Confirmation')}>
+              <TouchableOpacity style={styles.iconsModalButtons} onPress={savePicture}>
               <Image source={require('../../../assets/v.png')} />
               </TouchableOpacity>
             </View>
