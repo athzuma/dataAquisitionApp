@@ -138,9 +138,10 @@ const styles = StyleSheet.create({
   },
   instruction:{
     position:'absolute',
-    top:80,
-    fontSize:22,
-    fontWeight:"600"
+    top:60,
+    fontSize:28,
+    fontWeight:'bold',
+    textAlign:'center'
   },
 
 });

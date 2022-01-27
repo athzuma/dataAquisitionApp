@@ -29,6 +29,7 @@ const MaskSvg = () => {
           height={height}
           width={width}
           fill="#ffffff"
+          fillOpacity={0.5}
           mask="url(#mask)"
         />
       </Svg>
