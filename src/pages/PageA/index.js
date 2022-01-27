@@ -12,13 +12,10 @@ export default function PageA({navigation}) {
   const camRef = useRef (null); //referenciando a camera 
   const [capturedPhoto, setCapturedPhoto] = useState(null); //state para controlar captura de imagem
   const [open, setOpen] = useState(false); //state para controlar o modal de exibição
+  
+  //scaneando qrcode da imagem salva
+  const result = BarCodeScanner.scanFromURLAsync(capturedPhoto,[]);
 
-  const [scanned, setScanned] = useState(false);
-
-  const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
-    alert(`Código do tipo ${type} e valor ${data} foi escaneado`);
-  };
   
   useEffect(() => {// useEffect = 1ª vez que é executado o app
     (async () =>{
@@ -40,8 +37,6 @@ export default function PageA({navigation}) {
     return <Text>Acesso a câmera negado!</Text>
   } 
 
- 
-
   async function takePicture(){
     if(camRef){
       const data = await camRef.current.takePictureAsync();
@@ -55,7 +50,8 @@ export default function PageA({navigation}) {
     const asset = await MediaLibrary.createAssetAsync(capturedPhoto)
     .then(() =>{
       navigation.navigate('Confirmation')
-      console.log('Imagem salva')
+      console.log('Imagem salva') //salva a imagem e verifica se leu o qrcode
+      console.log(result.data);
     })
     .catch(error => {
       console.log('erro',error);
@@ -66,11 +62,6 @@ export default function PageA({navigation}) {
     <SafeAreaView style={styles.container}>
      
       <Camera style={styles.camera} type={type} ref={camRef} />
-
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
 
       <MaskSvg/>  
 
