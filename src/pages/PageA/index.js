@@ -12,9 +12,8 @@ export default function PageA({navigation}) {
   const camRef = useRef (null); //referenciando a camera 
   const [capturedPhoto, setCapturedPhoto] = useState(null); //state para controlar captura de imagem
   const [open, setOpen] = useState(false); //state para controlar o modal de exibição
+  const [code, setCode] = useState('');
   
-  //scaneando qrcode da imagem salva
-  const result = BarCodeScanner.scanFromURLAsync(capturedPhoto,[]);
 
   
   useEffect(() => {// useEffect = 1ª vez que é executado o app
@@ -43,6 +42,7 @@ export default function PageA({navigation}) {
       setCapturedPhoto(data.uri); //guardando a foto tirada
       setOpen(true);
       console.log(data);
+      scanCode(data.uri);
     }
   }
 
@@ -51,11 +51,32 @@ export default function PageA({navigation}) {
     .then(() =>{
       navigation.navigate('Confirmation')
       console.log('Imagem salva') //salva a imagem e verifica se leu o qrcode
-      console.log(result.data);
     })
     .catch(error => {
       console.log('erro',error);
     })
+  }
+
+  async function scanCode(image) {
+    await BarCodeScanner.scanFromURLAsync(image,[BarCodeScanner.Constants.BarCodeType.qr])
+    .then((response) => {
+      if (response.length === 1) {
+        setCode(response[0].data);
+      } else if (response.length === 0) {
+        handleError("Nenhum qr code foi detectado!");
+      } else {
+        handleError("Existe mais de um equipamento na imagem, tente tirar uma nova foto.");
+      }
+    })
+    .catch((error) => {
+      handleError("Não foi possível processar a imagem!");
+    }); 
+  }
+
+  function handleError(message) {
+    setOpen(false);
+    setCapturedPhoto(null);
+    alert(message);
   }
 
   return (
@@ -73,13 +94,15 @@ export default function PageA({navigation}) {
 
       { capturedPhoto &&
         <Modal
-        animationType="slide"
-        transparent={false}
-        visible={open}
+          animationType="slide"
+          transparent={false}
+          visible={open}
         >
           
           <View style={styles.modal}>
-                      
+
+            <Text style={styles.label}>{code}</Text>
+
             <View style={styles.iconsModal}> 
               <TouchableOpacity style={styles.iconsModalButtons} onPress={() => setOpen(false)}>
               <Image source={require('../../../assets/x.png')} />
@@ -131,7 +154,7 @@ const styles = StyleSheet.create({
   },
   image:{
     width:'95%',
-    height:780,
+    height: '50%',
     borderRadius:15,
     marginTop:20,
     marginBottom:20,
@@ -150,5 +173,11 @@ const styles = StyleSheet.create({
     fontSize:22,
     fontWeight:"600"
   },
+  label: {
+    backgroundColor: '#3B7132',
+    padding: 10,
+    borderRadius: 5,
+    color: 'white',
+  }
 
 });
